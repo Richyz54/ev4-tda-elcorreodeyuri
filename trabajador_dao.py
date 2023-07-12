@@ -17,8 +17,8 @@ def listar():
     #         print(row)
     
     # #Imprime listado en el log- para debug
-     for row in rows:
-         print(row)
+        for row in rows:
+            print(row)
     
     except Exception as ex:
         #Imprime error por pantalla
@@ -33,7 +33,9 @@ def listar():
         titulo='LISTADO'
         mensaje='Se generó Listado'
         messagebox.showinfo(titulo,mensaje)
+   
     return listado_trabajadores
+
 #Query Insert
 def insertar():
     conexion = ConexionDB()

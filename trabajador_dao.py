@@ -15,6 +15,11 @@ def listar():
     # #Imprime listado en el log- para debug
     #     for row in rows:
     #         print(row)
+    
+    # #Imprime listado en el log- para debug
+        for row in rows:
+            print(row)
+    
     except Exception as ex:
         #Imprime error por pantalla
         print("Error durante la conexión: {}".format(ex))
@@ -24,11 +29,13 @@ def listar():
         messagebox.showwarning(titulo,mensaje)
     finally:
         conexion.cerrar()
-        trabajador.logQuery()
+        logQuery()
         titulo='LISTADO'
         mensaje='Se generó Listado'
         messagebox.showinfo(titulo,mensaje)
+   
     return listado_trabajadores
+
 #Query Insert
 def insertar():
     conexion = ConexionDB()
@@ -40,7 +47,7 @@ def insertar():
         print("Error durante la conexión: {}".format(ex))
     finally:
         conexion.cerrar()
-        trabajador.logQuery()
+        logQuery()
         
 #Query Delete
 def eliminar():
@@ -53,7 +60,7 @@ def eliminar():
         print("Error durante la conexión: {}".format(ex))
     finally:
         conexion.cerrar()
-        trabajador.logQuery()
+        logQuery()
 
 def logQuery():
     a=" ******************************\n"

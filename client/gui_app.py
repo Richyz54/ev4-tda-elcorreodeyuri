@@ -16,6 +16,8 @@ def barra_menu(root):
     barra_menu.add_cascade(label='Consultas')
     barra_menu.add_cascade(label='Configuracion')
     barra_menu.add_cascade(label='Ayuda')
+    
+#Declaracion de Frame    
 class Frame(tk.Frame):
     def __init__(self, root =None):
         super().__init__(root, width=480, height=320)
@@ -23,11 +25,12 @@ class Frame(tk.Frame):
         self.pack()
         self.config(bg='purple')
 
-        self.campos_pelicula()
-        self.desabilitar_campos()
-        self.tabla_peliculas()
+        #Invoca funciones
+        self.listar_trabajadores()
+        self.deshabilitar_campos()
+        self.tabla_trabajadores()
 
-    def campos_pelicula(self):
+    def listar_trabajadores(self):
         #Label de cada campo
         self.label_nombre = tk.Label(self, text='Buscar ')
         self.label_nombre.config(font= ('Arial', 12, 'bold'), bg='purple')
@@ -36,14 +39,6 @@ class Frame(tk.Frame):
         self.label_duracion = tk.Label(self, text='Rut o ID Usuario: ')
         self.label_duracion.config(font=('Arial', 12, 'bold'), bg='purple')
         self.label_duracion.grid(row=1, column=0, padx=10, pady=10)
-
-        #self.label_duracion = tk.Label(self, text='Duracion: ')
-        #self.label_duracion.config(font=('Arial', 12, 'bold'), bg='purple')
-        #self.label_duracion.grid(row=1, column=0, padx=10, pady=10)
-
-        #self.label_genero = tk.Label(self, text='Genero: ')
-        #self.label_genero.config(font=('Arial', 12, 'bold'), bg='purple')
-        #self.label_genero.grid(row=2, column=0, padx=10, pady=10)
 
         #Entradas en cada campo
         self.mi_nombre = tk.StringVar()
@@ -70,7 +65,7 @@ class Frame(tk.Frame):
         self.boton_guardar.config(width=20, font=('Arial', 12, 'bold'), fg='white', bg='red', cursor='hand2', activebackground='yellow')
         self.boton_guardar.grid(row=3, column=1, padx=10, pady=10)
 
-        self.boton_cancelar = tk.Button(self, text='Cancelar', command=self.desabilitar_campos)
+        self.boton_cancelar = tk.Button(self, text='Cancelar', command=self.deshabilitar_campos)
         self.boton_cancelar.config(width=20, font=('Arial', 12, 'bold'), fg='white', bg='turquoise', cursor='hand2', activebackground='pink')
         self.boton_cancelar.grid(row=3, column=2, padx=10, pady=10)
 
@@ -87,7 +82,7 @@ class Frame(tk.Frame):
         self.boton_guardar.config(state='normal')
         self.boton_cancelar.config(state='normal')
 
-    def desabilitar_campos(self):
+    def deshabilitar_campos(self):
         self.mi_nombre.set('')
         self.mi_duracion.set('')
         self.mi_genero.set('')
@@ -101,16 +96,16 @@ class Frame(tk.Frame):
 
     def guardar_datos(self):
 
-        self.desabilitar_campos()
+        self.deshabilitar_campos()
 
-    def tabla_peliculas(self):
+    def tabla_trabajadores(self):
 
-        self.tabla = ttk.Treeview(self, column=('Nombre', 'Duracion', 'Genero'))
+        self.tabla = ttk.Treeview(self, column=('Nombre', 'eDAD', 'Genero'))
         self.tabla.grid(row=4, column=0, columnspan=4)  #columnspan significa que usa 4 columnas
 
         self.tabla.heading('#0', text='ID')
         self.tabla.heading('#1', text='NOMBRE')
-        self.tabla.heading('#2', text='DURACION')
+        self.tabla.heading('#2', text='EDAD')
         self.tabla.heading('#3', text='GENERO')
 
         self.tabla.insert('', 0, text='1', values=('Los vengadores', '2.35', 'Accion'))

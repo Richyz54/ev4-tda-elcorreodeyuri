@@ -1,6 +1,8 @@
 import tkinter
 import tkinter as tk
 from tkinter import ttk
+from model.trabajador_dao import listar
+
 
 def barra_menu(root):
     barra_menu = tkinter.Menu(root)
@@ -23,39 +25,54 @@ class Frame(tk.Frame):
         super().__init__(root, width=480, height=320)
         self.root = root
         self.pack()
-        self.config(bg='purple')
+       # self.config(bg='green')
 
-        #Invoca funciones
-        self.listar_trabajadores()
-        self.deshabilitar_campos()
+    #Listar trabajadores
         self.tabla_trabajadores()
 
-    def listar_trabajadores(self):
-        #Label de cada campo
-        self.label_nombre = tk.Label(self, text='Buscar ')
-        self.label_nombre.config(font= ('Arial', 12, 'bold'), bg='purple')
+    def campos_trabajadores(self):
+        #Label Nombre Completo
+        self.label_nombre = tk.Label(self, text='Nombre Completo ')
+        self.label_nombre.config(font= ('Arial', 12, 'bold'), bg='white')
         self.label_nombre.grid(row=0, column=0, padx=10, pady=10)
-
-        self.label_duracion = tk.Label(self, text='Rut o ID Usuario: ')
-        self.label_duracion.config(font=('Arial', 12, 'bold'), bg='purple')
-        self.label_duracion.grid(row=1, column=0, padx=10, pady=10)
-
-        #Entradas en cada campo
-        self.mi_nombre = tk.StringVar()
-        self.entry_nombre = tk.Entry(self, textvariable= self.mi_nombre)
+        #Label Rut
+        self.label_rut = tk.Label(self, text='Rut Trabajador: ')
+        self.label_rut.config(font=('Arial', 12, 'bold'), bg='white')
+        self.label_rut.grid(row=1, column=0, padx=10, pady=10)
+        #Label Sexo
+        self.label_sexo = tk.Label(self, text='Sexo: ')
+        self.label_sexo.config(font=('Arial', 12, 'bold'), bg='white')
+        self.label_sexo.grid(row=1, column=0, padx=10, pady=10)
+        #Label Dirección
+        self.label_dir = tk.Label(self, text='Sexo: ')
+        self.label_dir.config(font=('Arial', 12, 'bold'), bg='white')
+        self.label_dir.grid(row=1, column=0, padx=10, pady=10)
+        #Label Teléfono
+        self.label_tel = tk.Label(self, text='Sexo: ')
+        self.label_tel.config(font=('Arial', 12, 'bold'), bg='white')
+        self.label_tel.grid(row=1, column=0, padx=10, pady=10)
+                
+        #Entrada Nombre Completo
+        self.ent_nombre = tk.StringVar()
+        self.entry_nombre = tk.Entry(self, textvariable= self.ent_nombre)
         self.entry_nombre.config(width=50, font=('Arial', 12))
         self.entry_nombre.grid(row=0, column=1, padx=10, pady=10, columnspan=2)
-
-        self.mi_duracion = tk.StringVar()
-        self.entry_duracion = tk.Entry(self, textvariable= self.mi_duracion)
-        self.entry_duracion.config(width=50, font=('Arial', 12))
-        self.entry_duracion.grid(row=1, column=1, padx=10, pady=10, columnspan=2)
-
-        self.mi_genero = tk.StringVar()
-        self.entry_genero = tk.Entry(self, textvariable= self.mi_genero)
-        self.entry_genero.config(width=50, font=('Arial', 12))
-        self.entry_genero.grid(row=2, column=1, padx=10, pady=10, columnspan=2)
-
+        #Entrada Rut
+        self.ent_rut = tk.StringVar()
+        self.entry_rut = tk.Entry(self, textvariable= self.ent_rut)
+        self.entry_rut.config(width=50, font=('Arial', 12))
+        self.entry_rut.grid(row=1, column=1, padx=10, pady=10, columnspan=2)
+        #Entrada Sexo
+        self.ent_dir = tk.StringVar()
+        self.entry_dir = tk.Entry(self, textvariable= self.ent_dir)
+        self.entry_dir.config(width=50, font=('Arial', 12))
+        self.entry_dir.grid(row=2, column=1, padx=10, pady=10, columnspan=2)
+        #Entrada Teléfono
+        self.ent_tel = tk.StringVar()
+        self.entry_tel = tk.Entry(self, textvariable= self.ent_tel)
+        self.entry_tel.config(width=50, font=('Arial', 12))
+        self.entry_tel.grid(row=2, column=1, padx=10, pady=10, columnspan=2)
+        
         #Botones
         self.boton_nuevo= tk.Button(self, text='Nuevo', command=self.habilitar_campos)
         self.boton_nuevo.config(width=20, font=('Arial', 12, 'bold'), fg='white', bg='green', cursor='hand2', activebackground='white')
@@ -100,7 +117,7 @@ class Frame(tk.Frame):
 
     def tabla_trabajadores(self):
 
-        self.tabla = ttk.Treeview(self, column=('Nombre', 'eDAD', 'Genero'))
+        self.tabla = ttk.Treeview(self, column=('Nombre', 'Edad', 'Genero'))
         self.tabla.grid(row=4, column=0, columnspan=4)  #columnspan significa que usa 4 columnas
 
         self.tabla.heading('#0', text='ID')

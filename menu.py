@@ -1,5 +1,7 @@
 import tkinter as tk
-from client.gui_app import Frame, barra_menu
+from gui.gui_inicio import Frame, barra_menu
+#from gui.gui_listado import Frame, barra_menu
+#from gui.gui_nuevo_trabajador import Frame, barra_menu
 def main():
     root = tk.Tk()
     

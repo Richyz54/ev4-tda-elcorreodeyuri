@@ -14,8 +14,7 @@ def barra_menu(root):
     menu_inicio.add_command(label='Crear registro en DB')
     menu_inicio.add_command(label='Eliminar registro en DB')
     menu_inicio.add_command(label='Salir', command = root.destroy)
-
-    barra_menu.add_cascade(label='Consultas')
+    barra_menu.add_cascade(label='Consultas',)
     barra_menu.add_cascade(label='Configuracion')
     barra_menu.add_cascade(label='Ayuda')
     

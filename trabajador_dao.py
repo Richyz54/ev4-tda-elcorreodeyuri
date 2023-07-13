@@ -11,14 +11,11 @@ def listar():
     try:
         cursor=conexion.cursor.execute(sql)   
         print("EJECUTA QUERY SELECT \n")
-        rows = cursor.fetchall()
+        listado_trabajadores = cursor.fetchall()
     # #Imprime listado en el log- para debug
     #     for row in rows:
     #         print(row)
-    
-    # #Imprime listado en el log- para debug
-        for row in rows:
-            print(row)
+          
     
     except Exception as ex:
         #Imprime error por pantalla
@@ -30,10 +27,6 @@ def listar():
     finally:
         conexion.cerrar()
         logQuery()
-        titulo='LISTADO'
-        mensaje='Se generó Listado'
-        messagebox.showinfo(titulo,mensaje)
-   
     return listado_trabajadores
 
 #Query Insert
@@ -67,10 +60,10 @@ def logQuery():
     b="*      QUERY FINALIZADA      *\n"
     c="******************************\n"
     print(a,b,c)
-#listar()
-# insertar()
-# listar()
-# eliminar()
-# listar()
+insertar()
+listar()
+listar()
+eliminar()
+listar()
 
 

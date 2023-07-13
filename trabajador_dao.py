@@ -30,11 +30,13 @@ def listar():
     return listado_trabajadores
 
 #Query Insert
-def insertar():
+def ingresarTrabajador(rut,nombre,sexo,cargo,fehaingreso,area,departamento,direccion,telefono):
     conexion = ConexionDB()
-    sql = "Insert into Trabajadores(RutTrabajador, Nombre, SexoTrabajador, CargoTrabajador, FechaIngreso, Area, Departamento, Direccion,TelefonoTrabajador)    VALUES('2222-9','ADMIN2','NA','NA','2023/07/11','RRHH''RRHH','Coyancura 2288',    '987654321');"
+    #sql = "Insert into Trabajadores(RutTrabajador, Nombre, SexoTrabajador, CargoTrabajador, FechaIngreso, Area, Departamento, Direccion,TelefonoTrabajador)    VALUES('2222-9','ADMIN2','NA','NA','2023/07/11','RRHH''RRHH','Coyancura 2288',    '987654321');"
+    sql ="insert into Trabajadores values(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    valores = (rut,nombre,sexo,cargo,fehaingreso,area,departamento,direccion,telefono)
     try:
-        conexion.cursor.execute(sql)   
+        conexion.cursor.execute(sql,valores)   
         print("EJECUTA QUERY INSERT \n")
     except Exception as ex:
         print("Error durante la conexión: {}".format(ex))

@@ -10,7 +10,7 @@ class ConexionDB:
     def cerrar(self):
         self.connection.commit()
         self.connection.close()
-        print("La conexión ha finalizado.")
+        print("La conexión ha finalizado...")
         
 
 

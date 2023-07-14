@@ -1,0 +1,3 @@
+from GuiFormularioIngresoTrabajadores import FormularioT
+
+FormularioT()

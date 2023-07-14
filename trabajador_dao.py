@@ -3,7 +3,7 @@ from tkinter import messagebox
 
 
 #Query Select
-def listar():
+def listarTrabajador():
     conexion = ConexionDB()
     #Arreglo para retonar listado.
     listado_trabajadores = []
@@ -30,11 +30,34 @@ def listar():
     return listado_trabajadores
 
 #Query Insert
-def ingresarTrabajador(rut,nombre,sexo,cargo,fehaingreso,area,departamento,direccion,telefono):
+def ingresarTrabajador(rut,nombre,sexo,cargo,fechaingreso,area,departamento,direccion,telefono):
     conexion = ConexionDB()
     #sql = "Insert into Trabajadores(RutTrabajador, Nombre, SexoTrabajador, CargoTrabajador, FechaIngreso, Area, Departamento, Direccion,TelefonoTrabajador)    VALUES('2222-9','ADMIN2','NA','NA','2023/07/11','RRHH''RRHH','Coyancura 2288',    '987654321');"
-    sql ="insert into Trabajadores values(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-    valores = (rut,nombre,sexo,cargo,fehaingreso,area,departamento,direccion,telefono)
+    sql ="insert into Trabajadores values(?,?,?,?,?,?,?,?,?);"
+    valores = (rut,nombre,sexo,cargo,fechaingreso,area,departamento,direccion,telefono)
+    
+    print (sql)
+    print(valores)
+
+    try:
+        conexion.cursor.execute(sql,valores)   
+        print("EJECUTA QUERY INSERT \n")
+    except Exception as ex:
+        print("Error durante la conexión: {}".format(ex))
+    finally:
+        conexion.cerrar()
+        logQuery()
+        
+#Query Insert
+def modificarTrabajador(rut,nombre,sexo,cargo,fechaingreso,area,departamento,direccion,telefono):
+    conexion = ConexionDB()
+    #sql = "Insert into Trabajadores(RutTrabajador, Nombre, SexoTrabajador, CargoTrabajador, FechaIngreso, Area, Departamento, Direccion,TelefonoTrabajador)    VALUES('2222-9','ADMIN2','NA','NA','2023-07-11','RRHH''RRHH','Coyancura 2288',    '987654321');"
+    sql ="update Trabajadores SET Nombre = ?,SexoTrabajador = ?,CargoTrabajador = ?,FechaIngreso = ?,Area = ?,Departamento = ?,Direccion = ?,TelefonoTrabajador = ? where RutTrabajador =?;"
+    valores = (nombre,sexo,cargo,fechaingreso,area,departamento,direccion,telefono,rut)
+    
+    print (sql)
+    print(valores)
+
     try:
         conexion.cursor.execute(sql,valores)   
         print("EJECUTA QUERY INSERT \n")
@@ -45,7 +68,7 @@ def ingresarTrabajador(rut,nombre,sexo,cargo,fehaingreso,area,departamento,direc
         logQuery()
         
 #Query Delete
-def eliminar():
+def eliminarTrabajador():
     conexion = ConexionDB()
     sql = "delete from Trabajadores where RutTrabajador = '2222-9';"
     try:

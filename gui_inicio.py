@@ -50,4 +50,4 @@ class Frame(tk.Frame):
 
         #Iterar lista trabajadores de base de datos
         for t in self.lista_trabajadores:
-             self.tabla.insert('', 0, text=t[0], values=(t[1],t[2],t[3],t[4]))
+             self.tabla.insert('', 0, text=t[0], values=(t[1],t[2],t[3]))

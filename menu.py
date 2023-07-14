@@ -7,7 +7,7 @@ def main():
     root = tk.Tk()
     
     print("hola")
-    print('Cata')
+    print('Cata222222')
     #Ventana de interfaz de salida
     root.title('EL CORREO DE YURI')
     root.iconbitmap('img/logo.ico')

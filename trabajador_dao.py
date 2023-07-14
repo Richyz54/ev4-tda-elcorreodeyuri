@@ -33,8 +33,12 @@ def listar():
 def ingresarTrabajador(rut,nombre,sexo,cargo,fehaingreso,area,departamento,direccion,telefono):
     conexion = ConexionDB()
     #sql = "Insert into Trabajadores(RutTrabajador, Nombre, SexoTrabajador, CargoTrabajador, FechaIngreso, Area, Departamento, Direccion,TelefonoTrabajador)    VALUES('2222-9','ADMIN2','NA','NA','2023/07/11','RRHH''RRHH','Coyancura 2288',    '987654321');"
-    sql ="insert into Trabajadores values(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    sql ="insert into Trabajadores values(?,?,?,?,?,?,?,?,?);"
     valores = (rut,nombre,sexo,cargo,fehaingreso,area,departamento,direccion,telefono)
+    
+    print (sql)
+    print(valores)
+
     try:
         conexion.cursor.execute(sql,valores)   
         print("EJECUTA QUERY INSERT \n")

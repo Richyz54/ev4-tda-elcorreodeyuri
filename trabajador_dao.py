@@ -62,10 +62,6 @@ def logQuery():
     b="*      QUERY FINALIZADA      *\n"
     c="******************************\n"
     print(a,b,c)
-insertar()
-listar()
-listar()
-eliminar()
-listar()
+
 
 

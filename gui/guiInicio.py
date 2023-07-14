@@ -46,7 +46,7 @@ def barra_menu(root):
     menu_evento.add_command(label='Nuevo')
     menu_evento.add_command(label='Modificar ')
     menu_evento.add_command(label='Eliminar')
-    menu_evento.add_command(label='Listar',command=tabla_trabajadores)
+    menu_evento.add_command(label='Listar',command=tabla_trabajadores,compound=tk.LEFT)
    
     #Otros    
     barra_menu.add_cascade(label='Consultas', )

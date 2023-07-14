@@ -1,9 +1,9 @@
-from conexion_db import ConexionDB
+from .conexion_db import ConexionDB
 from tkinter import messagebox
 
 
 #Query Select
-def listar():
+def listarTrabajador():
     conexion = ConexionDB()
     #Arreglo para retonar listado.
     listado_trabajadores = []
@@ -49,7 +49,7 @@ def ingresarTrabajador(rut,nombre,sexo,cargo,fehaingreso,area,departamento,direc
         logQuery()
         
 #Query Delete
-def eliminar():
+def eliminarTrabajador():
     conexion = ConexionDB()
     sql = "delete from Trabajadores where RutTrabajador = '2222-9';"
     try:

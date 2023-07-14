@@ -101,10 +101,10 @@ def FormularioT():
         base.geometry("1400x700")
         base.title("Ficha Ingreso Trabajador")
 
-        groupBox = LabelFrame(base,text="Datos Personales del Trabajador",padx=5,pady=5)
+        groupBox = LabelFrame(base,text="Datos Personales del Trabajador")
         groupBox.grid(row=0,column=0,padx=10,pady=10)
 
-        labelRutTrabajador=Label(groupBox,text="RUT:",width=20,font=("arial",11)).grid(row=0,column=0)
+        labelRutTrabajador=Label(groupBox,text="RUT:",font=("arial",11)).grid(row=0,column=0)
         textBoxRutTrabajador = Entry(groupBox)
         textBoxRutTrabajador.grid(row=0,column=1)
 
@@ -197,11 +197,12 @@ def FormularioT():
 
 
         groupBox = LabelFrame(base,text="Lista de Trabajadores",padx=5,pady=5)
-        groupBox.grid(row=0,column=1,padx=10,pady=10)
+        groupBox.grid(row=0,column=1, columnspan=4)
 
         #Crear un Treeview
-
-        #Configurar las columnas
+        #Asigna header
+        tree = ttk.Treeview(groupBox,columns=("Rut Trabajador","Nombre Trabajador","Direccion","Telefono","Sexo"),show='headings',height=5,)
+    #Configurar las columnas
         tree = ttk.Treeview(groupBox,columns=("Rut Trabajador","Nombre Trabajador","Direccion","Telefono","Sexo"),show='headings',height=5,)
         tree.column("# 1",anchor=CENTER)
         tree.heading("# 1",text="Rut Trabajador")
@@ -217,7 +218,7 @@ def FormularioT():
         #Agregar los datos a la tabla y Mostrar la tabla
 
         for row in listarTrabajador():
-             tree.insert("","end",values=row)
+             tree.insert('', 0, text=row[0], values=(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8]))
 
         
         #Ejecutar la función de hacer clic y mostrar los entry

@@ -7,6 +7,7 @@ def main():
     root = tk.Tk()
     
     print("hola")
+    print("prueba")
     
     #Ventana de interfaz de salida
     root.title('EL CORREO DE YURI')

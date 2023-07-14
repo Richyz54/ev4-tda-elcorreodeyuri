@@ -9,7 +9,7 @@ def barra_menu(root):
     root.config(menu=barra_menu, width=300, height=300)
 
     menu_inicio=tk.Menu(barra_menu, tearoff=0)
-    barra_menu.add_cascade(label='Inicio', menu=menu_inicio)
+    barra_menu.add_cascade(label='Iniciooooo', menu=menu_inicio)
 
     menu_inicio.add_command(label='Crear registro en DB')
     menu_inicio.add_command(label='Eliminar registro en DB')

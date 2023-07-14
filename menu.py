@@ -1,5 +1,5 @@
 import tkinter as tk
-from gui_inicio import Frame, barra_menu
+from gui.gui_inicio import Frame, barra_menu
 #from gui_inicio_copia import Frame, barra_menu
 
 #import model.trabajador_dao as mt

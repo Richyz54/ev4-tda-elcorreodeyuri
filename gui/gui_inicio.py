@@ -1,7 +1,7 @@
 import tkinter
 import tkinter as tk
 from tkinter import ttk
-from trabajador_dao import listar
+from model.trabajador_dao import listar
 
 
 def barra_menu(root):
@@ -46,7 +46,7 @@ class Frame(tk.Frame):
         self.tabla.heading('#3', text='CARGO')
 
         #Muestra listado en duro - para debug
-        self.tabla.insert('', 0, text='1', values=('Los vengadores', '2.35', 'Accion'))
+        #self.tabla.insert('', 0, text='1', values=('Los vengadores', '2.35', 'Accion'))
 
         #Iterar lista trabajadores de base de datos
         for t in self.lista_trabajadores:

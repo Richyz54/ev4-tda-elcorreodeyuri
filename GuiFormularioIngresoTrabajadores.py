@@ -5,9 +5,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-
-from Conexion import *
-from IngresoDatosFormTrabajadores import *
+from trabajador_dao import *
 
 
 class FormularioTrabajadores:
@@ -218,7 +216,7 @@ def FormularioT():
 
         #Agregar los datos a la tabla y Mostrar la tabla
 
-        for row in IngresoTrabajador.mostrarTrabajadores():
+        for row in listarTrabajador():
              tree.insert("","end",values=row)
 
         
@@ -266,7 +264,7 @@ def guardarRegistros():
         parentesco = textBoxParentesco.get()
         sexoCarga = comboSexoCarga.get()
 
-        IngresoTrabajador.ingresarTrabajador(rutTrabajador,nombreTrabajador,sexoTrabajador,cargoTrabajador,fechaIngreso,area,departamento,direccionTrabajador,telefonoTrabajador)
+        ingresarTrabajador(rutTrabajador,nombreTrabajador,sexoTrabajador,cargoTrabajador,fechaIngreso,area,departamento,direccionTrabajador,telefonoTrabajador)
         messagebox.showinfo("Información","Los datos fueron guardados")
 
         actualizarTreeView()
@@ -296,10 +294,10 @@ def actualizarTreeView():
           tree.delete(*tree.get_children())
 
           #Obtener los nuevos datos que deseamos mostrar
-          datos = IngresoTrabajador.mostrarTrabajadores()
+          datos = listarTrabajador()
 
           #Insertar los nuevos datos en el TreeView
-          for row in IngresoTrabajador.mostrarTrabajadores():
+          for row in listarTrabajador:
              tree.insert("","end",values=row)
 
      except ValueError as error:
@@ -370,7 +368,7 @@ def modificarRegistros():
         parentesco = textBoxParentesco.get()
         sexoCarga = comboSexoCarga.get()
 
-        IngresoTrabajador.modificarTrabajador(rutTrabajador,nombreTrabajador,sexoTrabajador,cargoTrabajador,fechaIngreso,area,departamento,direccionTrabajador,telefonoTrabajador)
+        modificarTrabajador(rutTrabajador,nombreTrabajador,sexoTrabajador,cargoTrabajador,fechaIngreso,area,departamento,direccionTrabajador,telefonoTrabajador)
         messagebox.showinfo("Información","Los datos fueron actualizados")
 
         actualizarTreeView()
@@ -421,7 +419,7 @@ def eliminarRegistros():
         parentesco = textBoxParentesco.get()
         sexoCarga = comboSexoCarga.get()
 
-        IngresoTrabajador.eliminarTrabajador(rutTrabajador)
+        eliminarTrabajador(rutTrabajador)
         messagebox.showinfo("Información","Los datos fueron eliminados")
 
         actualizarTreeView()

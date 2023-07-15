@@ -1,7 +1,7 @@
 import tkinter
 import tkinter as tk
 from tkinter import ttk
-from trabajador_dao import listar
+from trabajadorDao import listarTrabajador
 
 
 def barra_menu(root):
@@ -33,7 +33,7 @@ def barra_menu(root):
 #Declaracion de Frame    
 class Frame(tk.Frame):
     def __init__(self, root =None):
-        super().__init__(root, width=480, height=320)
+        super().__init__(root, width=300, height=300)
         self.root = root
         self.pack()
         self.config(bg='green')
@@ -42,7 +42,7 @@ class Frame(tk.Frame):
         
     def tabla_trabajadores(self):
         #Recupera Lista de trabajadores
-        self.lista_trabajadores = listar()        
+        self.lista_trabajadores = listarTrabajador()        
         #Titulos Header Tabla
         self.tabla = ttk.Treeview(self, column=('Rut','Nombre', 'Sexo', 'Cargo', 'Fecha_Ingreso', 'Area', 'Departamento', 'Direccion', 'Telefono'))        
         #Se define la posición de la ventana donde se mostrará

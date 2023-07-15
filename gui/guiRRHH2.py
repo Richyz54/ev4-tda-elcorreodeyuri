@@ -1,7 +1,7 @@
 import tkinter
 import tkinter as tk
 from tkinter import ttk
-from trabajador_dao import listar
+from trabajadorDao import listar
 
 
 def barra_menu(root):

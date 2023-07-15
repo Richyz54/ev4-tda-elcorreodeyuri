@@ -3,6 +3,7 @@ from tkinter import messagebox
 from tkinter.ttk import *
 import pyodbc
 
+#abre una ventana que contendra el login
 root=Tk()
 root.title("Login")
 root.geometry("500x300")
@@ -21,7 +22,7 @@ contra= StringVar()
 contra1=Entry(root, width=30, textvariable=contra, show="*")
 contra1.pack()
 
-
+# abre una conexion con la base de datos valida el rut y la contraseña del usuario, trae el tipo de usuario y abre menu distinto segun el tipo de usuario.
 def validar():
     try:
         connection = pyodbc.connect('DRIVER={SQL Server};SERVER=sqlserver.cjnplcvfcn4g.sa-east-1.rds.amazonaws.com;DATABASE=Yury;UID=admin;PWD=TDA123456.')
@@ -52,9 +53,10 @@ def validar():
 
     except Exception as ex:
         messagebox.showerror("Error en la BD","Error durante la conexión: {}".format(ex))
-    #finally:
-        #connection.close()
+    finally:
+        connection.close()
 
+#boton que ejecuta la accion de validar
 Button (root, text="Iniciar Sesion", width=30, command = validar).pack()
 
 

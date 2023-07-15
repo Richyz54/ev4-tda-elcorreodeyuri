@@ -29,6 +29,9 @@ def listar():
         logQuery()
     return listado_trabajadores
 
+#Query Genero
+
+
 #Query Insert
 def ingresarTrabajador(rut,nombre,sexo,cargo,fehaingreso,area,departamento,direccion,telefono):
     conexion = ConexionDB()
